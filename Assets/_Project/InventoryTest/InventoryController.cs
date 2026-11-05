@@ -43,6 +43,37 @@ public class InventoryController : MonoBehaviour
         ChangeOccurred();
     }
 
+    public void SelectNext(bool occupied = false)
+    {
+        int current = inventoryModel.GetSelectedSlotNumber();
+        int newSlot = current;
+
+        for (int i = 0; i < inventoryDefinition.slotCount - 1; i++)
+        {
+            newSlot = (newSlot + 1) % inventoryDefinition.slotCount;
+            if (!occupied || inventoryModel.GetItemAt(newSlot) != null)
+            {
+                Select(newSlot);
+                return;
+            }
+        }
+    }
+
+    public void SelectPrevious(bool occupied = false)
+    {
+        int current = inventoryModel.GetSelectedSlotNumber();
+        int newSlot = current;
+
+        for (int i = 0; i < inventoryDefinition.slotCount - 1; i++)
+        {
+            newSlot = (newSlot + inventoryDefinition.slotCount - 1) % inventoryDefinition.slotCount;
+            if (!occupied || inventoryModel.GetItemAt(newSlot) != null)
+            {
+                Select(newSlot);
+                return;
+            }
+        }
+    }
     public int GetSelectedSlotNumber()
     {
         return inventoryModel.GetSelectedSlotNumber();
@@ -56,6 +87,12 @@ public class InventoryController : MonoBehaviour
     public void UseSelected()
     {
         inventoryModel.Activate();
+    }
+
+    public void SetItemAt(Inventoriable item, int slot)
+    {
+        inventoryModel.SetItemAt(item, slot);
+        ChangeOccurred();
     }
 
     
@@ -157,6 +194,11 @@ public class InventoryModel
     public Inventoriable GetItemAt(int slot)
     {
         return Slot(slot).Get();
+    }
+
+    public void SetItemAt(Inventoriable item, int slot)
+    {
+        Slot(slot).Set(item);
     }
 
     public void Clear(int slot)

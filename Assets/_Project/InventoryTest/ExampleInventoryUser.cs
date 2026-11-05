@@ -13,7 +13,7 @@ public class ExampleInventoryUser : MonoBehaviour
     [SerializeField] private MyItem item6;
 
 
-    private void Awake()
+    private void Start()
     {
         controller.TryAddItem(item1);
         controller.TryAddItem(item2);
