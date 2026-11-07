@@ -6,6 +6,7 @@ public class RealisticInventoryExample : MonoBehaviour
 {
     [SerializeField] private InventoryController controller;
 
+    [SerializeField] private WeaponDefinition pistolDef;
 
     private void Start()
     {
@@ -21,6 +22,8 @@ public class RealisticInventoryExample : MonoBehaviour
             if (scrolling < 0) controller.SelectNext(true);
             else controller.SelectPrevious(true);
         }
+        
+        if(Keyboard.current.spaceKey.wasPressedThisFrame) controller.UseSelected();
     }
 
 
@@ -35,7 +38,7 @@ public class RealisticInventoryExample : MonoBehaviour
 
     private void ExampleAddItem2()
     {
-        controller.SetItemAt(item2, 1);
+        controller.SetItemAt(new Pistol(pistolDef), 1);
         
     }
 }
