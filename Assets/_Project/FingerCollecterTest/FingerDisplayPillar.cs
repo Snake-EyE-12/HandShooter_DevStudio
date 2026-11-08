@@ -4,30 +4,20 @@ using UnityEngine;
 public class FingerDisplayPillar : MonoBehaviour, Interactable
 {
     [SerializeField] private FingerDefinition fingerDefinition;
-    [SerializeField] private GameObject fingerDisplay;
-    private void Start()
+
+    public bool IsInteractable => true;
+    public void OnEnterInteractable()
     {
-        DisplayFinger();
+        
     }
 
-    public void DisplayFinger()
+    public void OnInteract(Interaction interaction)
     {
-        fingerDisplay.SetActive(true);
+        interaction.GetHand().AddFinger(new Finger(fingerDefinition));
     }
 
-    public void HideFinger()
+    public void OnExitInteractable()
     {
-        fingerDisplay.SetActive(false);
-    }
-
-    public InteractionResult Interact(InteractionData interactionData)
-    {
-        if (fingerDisplay.activeSelf)
-        {
-            HideFinger();
-            interactionData.Hand.AddFinger(new Finger(fingerDefinition));
-        }
-
-        return null;
+        
     }
 }

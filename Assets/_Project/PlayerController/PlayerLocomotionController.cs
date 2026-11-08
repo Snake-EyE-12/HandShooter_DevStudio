@@ -6,7 +6,8 @@ public class PlayerLocomotionController : MonoBehaviour
     [SerializeField] private float acceleration = 15f;
     [SerializeField] private float deceleration = 20f;
     [SerializeField] private float maxSpeed = 5f;
-
+    [SerializeField] private float gravity = -20f;
+    [SerializeField] private float groundedGravity = -2f;
     private CharacterController characterController;
     private Vector2 direction;
     private Vector3 velocity;
@@ -27,7 +28,13 @@ public class PlayerLocomotionController : MonoBehaviour
         targetVelocity *= maxSpeed;
 
         float rate = direction.sqrMagnitude > 0 ? acceleration : deceleration;
-        velocity = Vector3.MoveTowards(velocity, targetVelocity, rate * Time.deltaTime);
+        velocity.x = Mathf.MoveTowards(velocity.x, targetVelocity.x, rate * Time.deltaTime);
+        velocity.z = Mathf.MoveTowards(velocity.z, targetVelocity.z, rate * Time.deltaTime);
+
+        if (characterController.isGrounded && velocity.y < 0)
+            velocity.y = groundedGravity;
+        else
+            velocity.y += gravity * Time.deltaTime;
 
         characterController.Move(velocity * Time.deltaTime);
     }

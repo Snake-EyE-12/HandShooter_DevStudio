@@ -5,18 +5,31 @@ public class Door : MonoBehaviour, Interactable
 {
     [SerializeField] private List<FingerType> requirements;
     [SerializeField] private GameObject openable;
-    public InteractionResult Interact(InteractionData interactionData)
-    {
-        if (interactionData.Hand.Has(requirements))
-        {
-            Open();
-        }
 
-        return null;
-    }
 
     private void Open()
     {
+        Debug.Log("open");
         openable.SetActive(false);
+    }
+
+    public bool IsInteractable => true;
+    public void OnEnterInteractable()
+    {
+        
+    }
+
+    public void OnInteract(Interaction interaction)
+    {
+        Debug.Log("Door");
+        if (interaction.GetHand().Has(requirements))
+        {
+            Open();
+        }
+    }
+
+    public void OnExitInteractable()
+    {
+        
     }
 }

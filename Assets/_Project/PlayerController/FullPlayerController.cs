@@ -1,9 +1,16 @@
+using System;
 using UnityEngine;
 
-public class FullPlayerController : MonoBehaviour, PlayerInputReceiver
+public class FullPlayerController : MonoBehaviour, PlayerInputReceiver, Interaction
 {
     [SerializeField] private PlayerLocomotionController locomotion;
     [SerializeField] private  PlayerCameraViewController viewer;
+    [SerializeField] private PlayerInventory inventory;
+    [SerializeField] private InteractionHandler interactor;
+    
+    [SerializeField] private Hand myHand;
+
+
     public void Move(Vector2 inputDirection)
     {
         locomotion.OnChangeDirection(inputDirection);
@@ -11,12 +18,12 @@ public class FullPlayerController : MonoBehaviour, PlayerInputReceiver
 
     public void Use()
     {
-        // Inventory
+        inventory.Use();
     }
 
     public void Interact()
     {
-        // Interaction Handler
+        interactor.Interact(this);
     }
 
     public void Look(Vector2 look)
@@ -26,6 +33,16 @@ public class FullPlayerController : MonoBehaviour, PlayerInputReceiver
 
     public void Scroll(float delta)
     {
-        // Inventory
+        inventory.Scroll(delta);
+    }
+
+    public Hand GetHand()
+    {
+        return myHand;
+    }
+
+    public void AddGun(WeaponDefinition definition)
+    {
+        inventory.AddWeapon(definition);
     }
 }

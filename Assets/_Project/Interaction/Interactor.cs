@@ -1,31 +1,24 @@
+using System.Linq;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class Interactor : MonoBehaviour
 {
-    [SerializeField] private float range = 20f;
+    [SerializeField] private float range = 3f;
     [SerializeField] private Camera cam;
-    
 
-    public void Interact(InteractionData interaction)
+    public Interactable[] FindInteractables()
     {
-        TryInteract(interaction);
-    }
-
-    private void TryInteract(InteractionData interaction)
-    {
-        Ray ray = cam.ScreenPointToRay(Mouse.current.position.ReadValue());
+        Ray ray = cam.ViewportPointToRay(new Vector3(0.5f, 0.5f));
 
         if (!Physics.Raycast(ray, out RaycastHit hit, range))
-            return;
+            return System.Array.Empty<Interactable>();
 
-        Interactable interactable = hit.collider.GetComponentInParent<Interactable>();
-        if (interactable == null)
-            interactable = hit.collider.GetComponentInChildren<Interactable>();
+        Interactable[] parents = hit.collider.GetComponentsInParent<Interactable>();
+        Interactable[] children = hit.collider.GetComponentsInChildren<Interactable>();
 
-        if (interactable == null)
-            return;
-
-        interactable.Interact(interaction);
+        return parents.Concat(children)
+            .Distinct()
+            .Where(x => x.IsInteractable)
+            .ToArray();
     }
 }

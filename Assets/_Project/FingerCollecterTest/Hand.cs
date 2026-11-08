@@ -4,23 +4,14 @@ using UnityEngine.InputSystem;
 
 public class Hand : MonoBehaviour
 {
-    [SerializeField] private Interactor interactor;
     [SerializeField] private FingerCollector collector;
     [SerializeField] private HandDisplay display;
     
     private void Update()
     {
-        TryInteraction();
         RenderHand();
     }
-
-    private void TryInteraction()
-    {
-        if (Mouse.current == null || !Mouse.current.leftButton.wasPressedThisFrame)
-            return;
-        interactor.Interact(new InteractionData(this));
-    }
-
+    
     private void RenderHand()
     {
         bool[] input_array = new[]

@@ -56,6 +56,7 @@ public abstract class Weapon : Inventoriable
 [System.Serializable]
 public class WeaponDefinition
 {
+    public string weaponType;
     public Sprite inventoryIcon;
     public GameObject weaponVisual;
     public int damage;

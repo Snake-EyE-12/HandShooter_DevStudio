@@ -6,20 +6,14 @@ using UnityEngine.Events;
 
 public interface Interactable
 {
-    public InteractionResult Interact(InteractionData interactionData);
+    public bool IsInteractable { get; }
+    public void OnEnterInteractable();
+    public void OnInteract(Interaction interaction);
+    public void OnExitInteractable();
 }
 
-public class InteractionData
+public interface Interaction
 {
-    public Hand Hand;
-
-    public InteractionData(Hand hand)
-    {
-        Hand = hand;
-    }
-}
-
-public class InteractionResult
-{
-    
+    public Hand GetHand();
+    public void AddGun(WeaponDefinition definition);
 }

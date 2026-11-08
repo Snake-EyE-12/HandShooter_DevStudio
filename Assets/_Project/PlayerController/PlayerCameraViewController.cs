@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class PlayerCameraViewController : MonoBehaviour
 {
-    [SerializeField] private Camera camera;
+    [SerializeField] private Camera _camera;
     [SerializeField] private float sensitivity = 1f;
 
     [Header("Pitch")]
@@ -19,7 +19,7 @@ public class PlayerCameraViewController : MonoBehaviour
 
     private void Awake()
     {
-        pitch = camera.transform.localEulerAngles.x;
+        pitch = _camera.transform.localEulerAngles.x;
         if (pitch > 180f) pitch -= 360f;
 
         yaw = transform.eulerAngles.y;
@@ -36,6 +36,6 @@ public class PlayerCameraViewController : MonoBehaviour
         if (limitYaw) yaw = Mathf.Clamp(yaw, minYaw, maxYaw);
 
         transform.rotation = Quaternion.Euler(0f, yaw, 0f);
-        camera.transform.localRotation = Quaternion.Euler(pitch, 0f, 0f);
+        _camera.transform.localRotation = Quaternion.Euler(pitch, 0f, 0f);
     }
 }
