@@ -11,6 +11,12 @@ public class FullPlayerController : MonoBehaviour, PlayerInputReceiver, Interact
     [SerializeField] private Hand myHand;
 
 
+    private void Awake()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+    }
+
     public void Move(Vector2 inputDirection)
     {
         locomotion.OnChangeDirection(inputDirection);
