@@ -27,6 +27,21 @@ public class FullPlayerController : MonoBehaviour, PlayerInputReceiver, Interact
         inventory.Use();
     }
 
+    public void StopUse()
+    {
+        inventory.Stop();
+    }
+
+    public void UseAlternate()
+    {
+        inventory.UseAlternate();
+    }
+
+    public void SelectSlot(int slot)
+    {
+        inventory.SelectSlot(slot);
+    }
+
     public void Interact()
     {
         interactor.Interact(this);
@@ -41,6 +56,13 @@ public class FullPlayerController : MonoBehaviour, PlayerInputReceiver, Interact
     {
         inventory.Scroll(delta);
     }
+    
+    
+    
+    
+    
+    
+    //------------------ For Interactions
 
     public Hand GetHand()
     {

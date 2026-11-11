@@ -17,6 +17,21 @@ public class PlayerInventory : MonoBehaviour
         controller.UseSelected();
     }
 
+    public void Stop()
+    {
+        controller.StopSelected();
+    }
+
+    public void UseAlternate()
+    {
+        controller.UseSelectedAlternate();
+    }
+
+    public void SelectSlot(int slotIndex)
+    {
+        controller.Select(slotIndex, true);
+    }
+
     public void Scroll(float amount)
     {
         if(Mathf.Abs(amount) > 0.1f)

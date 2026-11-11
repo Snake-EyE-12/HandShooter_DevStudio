@@ -25,7 +25,16 @@ public class Pistol : Weapon
     {
         definition.weaponVisual.SetActive(false);
     }
-    
+
+    protected override void CancelFire()
+    {
+        Debug.Log("CANCEL");
+    }
+
+    protected override void Reload()
+    {
+        Debug.Log("RELOAD");
+    }
 }
 
 public abstract class Weapon : Inventoriable
@@ -40,16 +49,20 @@ public abstract class Weapon : Inventoriable
     public void OnDeselect() => Unequip();
 
     public void OnUse() => Fire();
+    public void OnUseAlternate() => Reload();
+
+    public void OnCancel() => CancelFire();
 
     public Sprite GetIcon()
     {
         return definition.inventoryIcon;
     }
 
-    // Might want a "Cancel Fire"
     protected abstract void Fire();
     protected abstract void Equip();
     protected abstract void Unequip();
+    protected abstract void CancelFire();
+    protected abstract void Reload();
 }
 
 

@@ -37,8 +37,10 @@ public class InventoryController : MonoBehaviour
         ChangeOccurred();
     }
 
-    public void Select(int slot)
+    public void Select(int slot, bool mustBeOccupied = false)
     {
+        if (mustBeOccupied && !inventoryModel.IsSlotOccupied(slot)) return;
+
         inventoryModel.SelectSlotNumber(slot);
         ChangeOccurred();
     }
@@ -89,6 +91,16 @@ public class InventoryController : MonoBehaviour
         inventoryModel.Activate();
     }
 
+    public void StopSelected()
+    {
+        inventoryModel.Stop();
+    }
+
+    public void UseSelectedAlternate()
+    {
+        inventoryModel.ActivateAlternate();
+    }
+
     public void SetItemAt(Inventoriable item, int slot)
     {
         inventoryModel.SetItemAt(item, slot);
@@ -135,6 +147,16 @@ public class InventorySlot
     public void Use()
     {
         item?.OnUse();
+    }
+
+    public void UseAlternate()
+    {
+        item?.OnUseAlternate();
+    }
+
+    public void Cancel()
+    {
+        item?.OnCancel();
     }
 
     public void Set(Inventoriable item)
@@ -210,6 +232,21 @@ public class InventoryModel
     {
         Slot(selectedNumber).Use();
     }
+
+    public void Stop()
+    {
+        Slot(selectedNumber).Cancel();
+    }
+
+    public void ActivateAlternate()
+    {
+        Slot(selectedNumber).UseAlternate();
+    }
+
+    public bool IsSlotOccupied(int slot)
+    {
+        return Slot(slot).Occupied;
+    }
 }
 
 public interface Inventoriable
@@ -217,6 +254,8 @@ public interface Inventoriable
     public void OnSelect();
     public void OnDeselect();
     public void OnUse();
+    public void OnUseAlternate();
+    public void OnCancel();
     
     public Sprite GetIcon();
 }

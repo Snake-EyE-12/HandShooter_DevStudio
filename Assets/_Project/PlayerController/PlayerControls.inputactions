@@ -17,6 +17,16 @@
                     "priority": 0
                 },
                 {
+                    "name": "Reload",
+                    "type": "Button",
+                    "id": "1b812541-ad85-40b6-8de3-21e4ad971563",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false,
+                    "priority": 0
+                },
+                {
                     "name": "ScrollWheel",
                     "type": "PassThrough",
                     "id": "a9965ea1-9a46-4da3-a38c-1fa84587ae31",
@@ -55,6 +65,66 @@
                     "interactions": "",
                     "initialStateCheck": false,
                     "priority": 0
+                },
+                {
+                    "name": "NumberSelect1",
+                    "type": "Value",
+                    "id": "b1a73825-5fde-4932-93d1-5ab793d34825",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true,
+                    "priority": 0
+                },
+                {
+                    "name": "NumberSelect2",
+                    "type": "Value",
+                    "id": "f0c0cff2-85c1-4322-97a0-a0315e01023d",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true,
+                    "priority": 0
+                },
+                {
+                    "name": "NumberSelect3",
+                    "type": "Value",
+                    "id": "1bffe3f8-d94b-44fd-ad29-58d27708dd3d",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true,
+                    "priority": 0
+                },
+                {
+                    "name": "NumberSelect4",
+                    "type": "Value",
+                    "id": "efebb442-eaaa-46d8-80bc-2569a22152ac",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true,
+                    "priority": 0
+                },
+                {
+                    "name": "NumberSelect5",
+                    "type": "Value",
+                    "id": "49a70640-dc8b-407e-aec8-90aa419a5d66",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true,
+                    "priority": 0
+                },
+                {
+                    "name": "NumberSelect6",
+                    "type": "Value",
+                    "id": "533059b3-1516-4016-b8f0-fd3789331005",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true,
+                    "priority": 0
                 }
             ],
             "bindings": [
@@ -66,6 +136,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Attack",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "406b74f5-9193-43dc-b911-abb4a499cf02",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Reload",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -253,6 +334,72 @@
                     "processors": "",
                     "groups": "",
                     "action": "Interact",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "2ee8efc4-6db9-47bd-aa6b-6c9343256db4",
+                    "path": "<Keyboard>/1",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "NumberSelect1",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d74621f6-99a5-4753-ba76-ca6756b36108",
+                    "path": "<Keyboard>/2",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "NumberSelect2",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "2a31664f-4d3c-4925-ab06-7dc51fc87229",
+                    "path": "<Keyboard>/3",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "NumberSelect3",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "2344d1ee-8ac8-45f5-8aee-0d5e02170ddf",
+                    "path": "<Keyboard>/4",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "NumberSelect4",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "fcdab645-7eb1-4a54-9d9f-bcfab34c53df",
+                    "path": "<Keyboard>/5",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "NumberSelect5",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e7cd0c20-249d-4837-ab8c-7b6e73870bfc",
+                    "path": "<Keyboard>/6",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "NumberSelect6",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

@@ -55,6 +55,16 @@ public class MyItem : Inventoriable
         Debug.Log($"Using: {sprite.name}");
     }
 
+    public void OnUseAlternate()
+    {
+        
+    }
+
+    public void OnCancel()
+    {
+        
+    }
+
     public Sprite GetIcon()
     {
         return sprite;
