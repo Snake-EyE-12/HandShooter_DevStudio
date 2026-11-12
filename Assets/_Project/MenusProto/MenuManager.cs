@@ -2,20 +2,32 @@ using UnityEngine;
 
 public class MenuManager : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    [SerializeField] private BaseMenu[] menus;
+
+    public void DisplayMenu(int toDisplay)
     {
-        
+        foreach(var m in menus)
+        {
+            m.CloseMenu();
+        }
+
+        menus[toDisplay].OpenMenu();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void Start()
     {
-        
+        DisplayMenu(0);
     }
+}
 
-    public void StartGame()
+public abstract class BaseMenu : MonoBehaviour
+{
+    public virtual void OpenMenu()
     {
-        SceneLoader.LoadScene("TestPauseMenu");
+        gameObject.SetActive(true);
+    }
+    public virtual void CloseMenu()
+    {
+        gameObject.SetActive(false);
     }
 }
