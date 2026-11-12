@@ -4,6 +4,7 @@ public class MenuManager : MonoBehaviour
 {
     [SerializeField] private BaseMenu[] menus;
 
+    // closes all other menus and displays the appropriate menu.
     public void DisplayMenu(int toDisplay)
     {
         foreach(var m in menus)
@@ -22,6 +23,7 @@ public class MenuManager : MonoBehaviour
 
 public abstract class BaseMenu : MonoBehaviour
 {
+    // base class for all menus to allow some functionality on opening a menu
     public virtual void OpenMenu()
     {
         gameObject.SetActive(true);

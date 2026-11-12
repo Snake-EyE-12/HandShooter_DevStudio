@@ -18,6 +18,7 @@ public class LevelSelectMenuScript : BaseMenu
 
     private void Start()
     {
+        // setsup all the levels in the level select
         for (int i = 0; i < levels.Length; i++)
         {
             LevelSelectScript level = Instantiate(levelSelectPrefab.gameObject, levelSelectScrollContent.transform).GetComponent<LevelSelectScript>();
@@ -26,12 +27,14 @@ public class LevelSelectMenuScript : BaseMenu
         }
     }
 
+    // displays the level information oof tthe selected level from tthe level select list.
     public void SelectLevel(int selectedLevel)
     {
         currentlySelectedData = selectedLevel;
         DisplayLevelInformation();
     }
 
+    // updated displayed level information
     public void DisplayLevelInformation()
     {
         levelDescription.gameObject.SetActive(true);
@@ -39,11 +42,13 @@ public class LevelSelectMenuScript : BaseMenu
         StartButton.gameObject.SetActive(true);
     }
 
+    // actually loads the selected level
     public void StartGame()
     {
         SceneLoader.LoadScene(levels[currentlySelectedData].scene.name);
     }
 
+    // unselects the level
     public void UnselectLevel()
     {
         levelDescription.gameObject.SetActive(false);
@@ -63,6 +68,7 @@ public class LevelSelectMenuScript : BaseMenu
 }
 
 
+// info for diisplaying level information in the level select menu
 [Serializable]
 public struct LevelInfo
 {
