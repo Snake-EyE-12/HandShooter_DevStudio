@@ -5,6 +5,7 @@ public class PlayerInventory : MonoBehaviour
 {
     private WeaponFactory factory = new WeaponFactory();
     [SerializeField] private InventoryController controller;
+    [SerializeField] private Animator weaponAnims;
 
     private void Start()
     {
@@ -43,7 +44,7 @@ public class PlayerInventory : MonoBehaviour
 
     public void AddWeapon(WeaponDefinition definition)
     {
-        controller.TryAddItem(factory.GetWeapon(definition));
+        controller.TryAddItem(factory.GetWeapon(definition, weaponAnims));
     }
 
 
@@ -55,7 +56,7 @@ public class PlayerInventory : MonoBehaviour
     {
         for (int i = 0; i < initialWeapons.Count; i++)
         {
-            controller.SetItemAt(factory.GetWeapon(initialWeapons[i]), i);
+            controller.SetItemAt(factory.GetWeapon(initialWeapons[i], weaponAnims), i);
         }
     }
 
@@ -63,8 +64,17 @@ public class PlayerInventory : MonoBehaviour
 
 public class WeaponFactory
 {
-    public Weapon GetWeapon(WeaponDefinition definition)
+    public Weapon GetWeapon(WeaponDefinition definition, Animator animator)
     {
-        return new Pistol(definition);
+        switch(definition.weaponType)
+        {
+            case "Pistol":
+                return new Pistol(definition, animator);
+            case "Shotgun":
+                return new Shotgun(definition, animator);
+            case "ClapGun":
+                return new ClapGun(definition, animator);
+        }
+        return new Pistol(definition, animator);
     }
 }

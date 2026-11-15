@@ -33644,9 +33644,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GunAdder
   def:
-    weaponType: pistol
+    weaponType: Shotgun
     inventoryIcon: {fileID: 21300000, guid: b6073d723b6ef3f429aa7e1d0f3db44f, type: 3}
-    weaponVisual: {fileID: 580043606}
+    weaponVisual: {fileID: 9100000, guid: 071e7fd4ce4e57745a1d90eec399e5f4, type: 2}
     damage: 3
 --- !u!1 &608153897
 GameObject:
@@ -65604,9 +65604,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GunAdder
   def:
-    weaponType: p
+    weaponType: ClapGun
     inventoryIcon: {fileID: 21300000, guid: f38e832edef3ab648bcc2ab5dfa2906d, type: 3}
-    weaponVisual: {fileID: 1035663837}
+    weaponVisual: {fileID: 9100000, guid: 110325a5a38615b45828641f60fb5387, type: 2}
     damage: 10
 --- !u!1 &1317828730
 GameObject:
@@ -76861,7 +76861,7 @@ Animator:
   m_GameObject: {fileID: 1560752100}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 63e00e6121afc2b429eb9f39f60f1e61, type: 2}
+  m_Controller: {fileID: 9100000, guid: 110325a5a38615b45828641f60fb5387, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -94191,7 +94191,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerCameraViewController
   _camera: {fileID: 1525110713}
-  sensitivity: 1
+  sensitivity: 0.05
   minPitch: -90
   maxPitch: 90
   limitYaw: 0
@@ -94495,6 +94495,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerInventory
   controller: {fileID: 595622485}
+  weaponAnims: {fileID: 1560752102}
   initialWeapons:
   - weaponType: pistol
     inventoryIcon: {fileID: 21300000, guid: cd221d2235472c94491e607ae42942dd, type: 3}

@@ -38,7 +38,7 @@ public class RealisticInventoryExample : MonoBehaviour
 
     private void ExampleAddItem2()
     {
-        controller.SetItemAt(new Pistol(pistolDef), 1);
+        //controller.SetItemAt(new Pistol(pistolDef), 1);
         
     }
 }

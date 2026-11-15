@@ -1,9 +1,9 @@
 using UnityEngine;
 
 
-public class Pistol : Weapon
+public class Pistol : DefaultWeapon
 {
-    public Pistol(WeaponDefinition definition) : base(definition)
+    public Pistol(WeaponDefinition definition, Animator animator) : base(definition, animator)
     {
     }
 
@@ -14,25 +14,14 @@ public class Pistol : Weapon
 
         if (hit.collider.TryGetComponent(out Damageable damagable))
             damagable.Damage(definition.damage);
-    }
 
-    protected override void Equip()
-    {
-        //definition.weaponVisual.SetActive(true);
-    }
-
-    protected override void Unequip()
-    {
-        //definition.weaponVisual.SetActive(false);
-    }
-
-    protected override void CancelFire()
-    {
-        Debug.Log("CANCEL");
+        anims.SetTrigger("Fire");
     }
 
     protected override void Reload()
     {
-        Debug.Log("RELOAD");
+        //Debug.Log("RELOAD");
+        anims.ResetTrigger("Fire");
+        anims.SetTrigger("Reload");
     }
 }

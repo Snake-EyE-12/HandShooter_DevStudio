@@ -4,10 +4,12 @@ using UnityEngine;
 public abstract class Weapon : Inventoriable
 {
     protected WeaponDefinition definition;
+    protected Animator anims;
 
-    public Weapon(WeaponDefinition definition)
+    public Weapon(WeaponDefinition definition, Animator animator)
     {
         this.definition = definition;
+        this.anims = animator;
     }
     public void OnSelect() => Equip();
     public void OnDeselect() => Unequip();
