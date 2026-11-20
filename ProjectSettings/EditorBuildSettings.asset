@@ -29,6 +29,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_Project/WeaponsTest/Weapons.unity
     guid: 6e480e97cbc36e44ba75f66586a8d028
+  - enabled: 1
+    path: Assets/_Project/WeaponsPrototype/WeaponsPrototype.unity
+    guid: 49512131ac2fc5b4780dc283476d6dc6
+  - enabled: 1
+    path: Assets/_Project/EnemyPrototype/EnemyPrototype.unity
+    guid: c6d97c75cc3f0aa41aad571a3d41c4ca
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0
