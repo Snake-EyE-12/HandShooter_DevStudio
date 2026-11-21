@@ -20,23 +20,24 @@ public class EnemyBillboard : MonoBehaviour
     {
         if (mainCameraTransform == null) return;
 
-        transform.rotation = mainCameraTransform.rotation;
+        transform.rotation = Quaternion.Euler(0, mainCameraTransform.rotation.eulerAngles.y, 0);
 
-        Vector3 playerdirref = mainCameraTransform.position - transform.position;
+        Vector3 playerposref = mainCameraTransform.position - transform.position;
 
-        Vector2 camf = new Vector2(playerdirref.x, playerdirref.z).normalized;
-        Vector2 rootf = new Vector2(enemyRoot.forward.x, enemyRoot.forward.z).normalized;
+        Vector2 enemydir = new Vector2(enemyRoot.forward.x, enemyRoot.forward.z).normalized;
+        Vector2 playerdir = new Vector2(playerposref.x, playerposref.z).normalized;
 
-        float enemydir = Mathf.Atan2(rootf.y, rootf.x) * Mathf.Rad2Deg;
-        float playdir = Mathf.Atan2(camf.y, camf.x) * Mathf.Rad2Deg;
-        //Debug.Log("Enemy Dir: " + enemydir / 90);
+        // get the angle the enemy is facing
+        // get the angle the player is in relation to the enemy
+        float enemyangle = Mathf.Atan2(enemydir.y, enemydir.x) * Mathf.Rad2Deg;
+        float playerangle = Mathf.Atan2(playerdir.y, playerdir.x) * Mathf.Rad2Deg;
 
-        float finaldir = ((enemydir - playdir) + 180) % 360; // for tomorrow max: figure out how to correctly translate the difference of the 2 directions into the 360 degree range
-        Debug.Log("final Dir: " + finaldir);
+        // find the difference of the two angles, then put them between 0-360 degrees
+        // and add a 45 degree offset
+        float finaldir = ((playerangle - enemyangle) + 360 + 45) % 360;
 
-        int dirSprite = Mathf.FloorToInt((finaldir / 90));
-
-        //EnemyVisual.sprite = enemyDirections[dirSprite];
-        Debug.Log("PLayer Dir: " + dirSprite);
+        // put the 0-360 degrees into the 0-3 int range
+        int dirSprite = Mathf.FloorToInt((finaldir) / 90);
+        EnemyVisual.sprite = enemyDirections[dirSprite];
     }
 }
